@@ -1,0 +1,38 @@
+
+# Lab : Essential Google Cloud Infrastructure - Creating Virtual Machines
+
+## Objectives
+
+In this lab, you explore the available options for VMs and see the differences between locations.
+
+In this lab, you learn how to perform the following tasks:
+
+Create several standard VMs
+
+Create advanced VMs
+
+
+## steps
+
+1. Create a utility virtual machine
+
+
+gcloud compute instances create instance-1 --zone=us-central1-c --machine-type=n1-standard-1 --subnet=default
+
+2. Create a Windows virtual machine
+
+gcloud compute instances create windows-vm --zone=europe-west2-a --machine-type=n1-standard-2 --image=windows-server-1809-dc-core-for-containers-v20200908 --image-project=windows-cloud --boot-disk-size=100GB --boot-disk-type=pd-ssd --boot-disk-device-name=windows-vm --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
+
+
+gcloud compute firewall-rules create default-allow-http --direction=INGRESS  --action=ALLOW --rules=tcp:80  --target-tags=http-server
+
+
+gcloud compute firewall-rules create default-allow-https --direction=INGRESS --action=ALLOW --rules=tcp:443 --target-tags=https-server 
+
+
+3. Create a custom virtual machine
+
+
+gcloud compute instances create custom-vm --zone=us-west1-b --machine-type=custom-6-32768 --image=debian-9-stretch-v20200910 --image-project=debian-cloud --subnet=default 
+
+
